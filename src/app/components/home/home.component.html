@@ -1,0 +1,25 @@
+<h1>Peliculas</h1>
+
+<h2>Peliculas populares:</h2>
+<div class="card-columns">
+    <div class="card" *ngFor="let pelicula of peliculasSolicitadas">
+        <img [src]="'http://image.tmdb.org/t/p/w200/' + pelicula.poster_path" class="card-img-top" [alt]="pelicula.title">
+        <div class="card-body">
+            <h5 class="card-title">{{pelicula.title}}</h5>
+            <p class="card-text">{{pelicula.overview}}</p>
+            <p class="card-text"><small class="text-muted">Lanzamiento: {{pelicula.release_date}}</small></p>
+        </div>
+    </div>
+</div>
+
+<h2>Peliculas nuevas:</h2>
+<div class="card-columns">
+    <div class="card" *ngFor="let pelicula of peliculasUltimas">
+        <img [src]="'http://image.tmdb.org/t/p/w200/' + pelicula.poster_path" class="card-img-top" [alt]="pelicula.title">
+        <div class="card-body">
+            <h5 class="card-title">{{pelicula.title}}</h5>
+            <p class="card-text">{{pelicula.overview}}</p>
+            <p class="card-text"><small class="text-muted">Lanzamiento: {{pelicula.release_date}}</small></p>
+        </div>
+    </div>
+</div>

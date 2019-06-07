@@ -1,0 +1,20 @@
+<h1>Buscar peliculas</h1>
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <label for="text" class="sr-only">Buscar</label>
+        <input type="text" id="textoABuscar" name="textoABuscar" placeholder="Buscar" [(ngModel)]="textoABuscar">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" (click)="buscar()">Buscar</button>
+</form>
+<hr>
+<h2>Peliculas encontradas:</h2>
+<div class="card-columns">
+    <div class="card" *ngFor="let pelicula of peliculas">
+        <img [src]="'http://image.tmdb.org/t/p/w200/' + pelicula.poster_path" class="card-img-top" [alt]="pelicula.title">
+        <div class="card-body">
+            <h5 class="card-title">{{pelicula.title}}</h5>
+            <p class="card-text">{{pelicula.overview}}</p>
+            <p class="card-text"><small class="text-muted">Lanzamiento: {{pelicula.release_date}}</small></p>
+        </div>
+    </div>
+</div>
