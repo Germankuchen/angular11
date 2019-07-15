@@ -19,17 +19,25 @@ export class HomeComponent implements OnInit {
       for (let peliculaNum = 0; peliculaNum < PELICULAS.length; peliculaNum++) {
           this.peliculasSolicitadas.push(new Pelicula(PELICULAS[peliculaNum].title, PELICULAS[peliculaNum].poster_path,
             PELICULAS[peliculaNum].original_language, PELICULAS[peliculaNum].adult,
-            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date));
+            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date,
+            PELICULAS[peliculaNum].id));
       }
+      localStorage.setItem('populares', JSON.stringify(this.peliculasSolicitadas));
     });
     this._ps.getUltimas().subscribe(data => {
       const PELICULAS = data._body.results;
       for (let peliculaNum = 0; peliculaNum < PELICULAS.length; peliculaNum++) {
           this.peliculasUltimas.push(new Pelicula(PELICULAS[peliculaNum].title, PELICULAS[peliculaNum].poster_path,
             PELICULAS[peliculaNum].original_language, PELICULAS[peliculaNum].adult,
-            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date));
+            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date,
+            PELICULAS[peliculaNum].id));
       }
+      localStorage.setItem('ultimas', JSON.stringify(this.peliculasUltimas));
     });
+  }
+
+  guardarHistorial() {
+    localStorage.setItem('ultimo', 'home');
   }
 
 }

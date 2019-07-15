@@ -27,9 +27,15 @@ export class BusquedaComponent implements OnInit {
       for (let peliculaNum = 0; peliculaNum < PELICULAS.length; peliculaNum++) {
           this.peliculas.push(new Pelicula(PELICULAS[peliculaNum].title, PELICULAS[peliculaNum].poster_path,
             PELICULAS[peliculaNum].original_language, PELICULAS[peliculaNum].adult,
-            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date));
+            PELICULAS[peliculaNum].overview, PELICULAS[peliculaNum].release_date,
+            PELICULAS[peliculaNum].id));
       }
+      localStorage.setItem('buscadas', JSON.stringify(this.peliculas));
     });
+  }
+
+  guardarHistorial() {
+    localStorage.setItem('ultimo', 'busqueda');
   }
 
 }
